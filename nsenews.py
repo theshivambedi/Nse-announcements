@@ -1,9 +1,10 @@
 import requests
 import time
 
+#declaring the URL
 url = "https://www.nseindia.com/api/corporate-announcements?index=equities"
 
-
+#Declaring headers one and two for two separate sessions
 header_one = {
     'authority': 'www.nseindia.com',
     'accept': 'text/html,application/xhtml+xml,application/xml;q=0.9,image/avif,image/webp,image/apng,*/*;q=0.8,application/signed-exchange;v=b3;q=0.7',
@@ -33,12 +34,13 @@ header_two = {
     "user-agent":"--user-agent=Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/121.0.0.0 Safari/537.36"
 }
 
-#ua = {"user-agent":"--user-agent=Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/605.1.15 (KHTML, like Gecko) Version/17.1 Safari/605.1.15"}
 
+#creating session one
 session = requests.Session()
 
 first = session.get(url, headers = header_one)
 
+#function for session one
 def first_session():
     if first.status_code == 200:
      print(first.status_code)
@@ -49,8 +51,10 @@ def first_session():
 
 first_session()
 
+#sleep function to emulate browser
 time.sleep(3)
 
+#creating session two which will run with the second header
 session_two = requests.Session()
 second = session_two.get(url, headers = header_two)
 
