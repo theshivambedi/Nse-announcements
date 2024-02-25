@@ -1,0 +1,27 @@
+[project]
+name = "nse_announcements"
+version = "0.1.0"
+description = "Fetch NSE Announcements"
+authors = [
+    { name = "Shabbir Hasan", email = "68828793+ShabbirHasan1@users.noreply.github.com" },
+]
+dependencies = ["curl_cffi>=0.6.1", "pandas>=2.2.1"]
+readme = "README.md"
+requires-python = ">= 3.8"
+
+[project.scripts]
+hello = "nse_announcements:hello"
+
+[build-system]
+requires = ["hatchling"]
+build-backend = "hatchling.build"
+
+[tool.rye]
+managed = true
+dev-dependencies = ["ruff>=0.2.2"]
+
+[tool.hatch.metadata]
+allow-direct-references = true
+
+[tool.hatch.build.targets.wheel]
+packages = ["src/nse_announcements"]
